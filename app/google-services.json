@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1017379757360",
+    "project_id": "myquizapp-7c19d",
+    "storage_bucket": "myquizapp-7c19d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017379757360:android:f710d30953834a8085bcf5",
+        "android_client_info": {
+          "package_name": "com.tien.quizapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRyr2AqLBzFj_eUtyItYUG03qMnmmY_r8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
