@@ -1,20 +1,22 @@
 package com.tien.quizapp
 
 data class QuizModel(
-    val id : String,
-    val title : String,
-    val subtitle : String,
-    val time : String,
-    val questionList : List<QuestionModel>
+    // Đổi 'val' thành 'var' để có thể gán ID sau khi lấy từ Firebase
+    var id : String,
+    var title : String,
+    var subtitle : String,
+    var time : String,
+    var questionList : List<QuestionModel>
 ){
+    // Constructor rỗng cho Firebase
     constructor() : this("","","","", emptyList())
 }
 
 data class QuestionModel(
-    val question : String,
-    val options : List<String>,
-    val correct : String,
+    var question : String,
+    var options : List<String>,
+    var correct : String,
 ){
+    // Constructor rỗng cho Firebase
     constructor() : this ("", emptyList(),"")
 }
-

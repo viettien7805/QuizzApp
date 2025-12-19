@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginHorizontal="4dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/rank_number"
+            android:layout_width="28dp"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="#6A5AE0"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <FrameLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp">
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/avatar_default"
+                android:scaleType="centerCrop"
+                android:background="@drawable/bg_avatar_yellow" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border_white_2dp" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/player_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Madelyn Dias"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#212121"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/player_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@Madelyn_dias"
+                android:textSize="11sp"
+                android:fontFamily="sans-serif"
+                android:textColor="#757575" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🏅"
+                android:textSize="14sp"
+                android:layout_marginEnd="4dp" />
+
+            <TextView
+                android:id="@+id/player_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="590"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#212121"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

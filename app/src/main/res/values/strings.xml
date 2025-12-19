@@ -1,3 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">QuizOnline</string>
+    <string name="app_name">Quiz App</string>
+    <string name="back">Back</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="action">Action</string>
+    <string name="question">Which soccer team won the FIFA World Cup for the first time?</string>
+    <string name="time">Time</string>
+    <string name="timer">00:12</string>
 </resources>

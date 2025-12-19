@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:text="Tạo Bộ Đề Mới"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:textColor="#673AB7"/>
+
+        <EditText
+            android:id="@+id/etQuizTitle"
+            android:hint="Tên bộ đề (VD: Kiểm tra Toán 15p)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/etQuizTime"
+            android:hint="Thời gian (phút)"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnUploadFile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload PDF để AI tạo câu hỏi"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#FF9800"
+                android:drawableLeft="@android:drawable/ic_menu_upload"
+                android:drawablePadding="10dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(Hỗ trợ file PDF văn bản rõ ràng)"
+                android:textSize="12sp"
+                android:textColor="#757575"
+                android:layout_marginTop="4dp"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:elevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvQuestionCount"
+                    android:text="Câu hỏi số 1"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:id="@+id/etQuestion"
+                    android:hint="Nhập nội dung câu hỏi..."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="80dp"
+                    android:gravity="top"
+                    android:background="#FAFAFA"
+                    android:padding="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <EditText android:id="@+id/etOptionA" android:hint="Đáp án A" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="5dp"/>
+                <EditText android:id="@+id/etOptionB" android:hint="Đáp án B" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="5dp"/>
+                <EditText android:id="@+id/etOptionC" android:hint="Đáp án C" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="5dp"/>
+                <EditText android:id="@+id/etOptionD" android:hint="Đáp án D" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:text="Đáp án đúng là:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"/>
+
+                <RadioGroup
+                    android:id="@+id/rgCorrectAnswer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton android:id="@+id/rbA" android:text="A" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+                    <RadioButton android:id="@+id/rbB" android:text="B" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+                    <RadioButton android:id="@+id/rbC" android:text="C" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+                    <RadioButton android:id="@+id/rbD" android:text="D" android:layout_weight="1" android:layout_width="0dp" android:layout_height="wrap_content"/>
+                </RadioGroup>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btnAddQuestion"
+            android:text="Thêm câu này &amp; Nhập tiếp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2196F3"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btnFinish"
+            android:text="Lưu Bộ Đề (Hoàn tất)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#4CAF50"/>
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:text="Hủy bỏ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF5722"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+</ScrollView>

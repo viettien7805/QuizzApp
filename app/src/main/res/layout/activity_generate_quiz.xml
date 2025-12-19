@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F5F5F5"> <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Trợ lý AI &amp; Tạo Game"
-    android:textSize="22sp"
-    android:textStyle="bold"
-    android:gravity="center"
-    android:padding="15dp"
-    android:background="@color/white"
-    android:elevation="4dp"/>
+    android:background="#F5F5F5">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="10dp"
+        android:elevation="4dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="#757575"
+            android:contentDescription="Thoát"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trợ lý AI &amp; Tạo Game"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/swChatMode"
@@ -42,7 +61,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp"
-        android:background="@color/white"
+        android:background="@android:color/white"
         android:elevation="10dp">
 
         <EditText

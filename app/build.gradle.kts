@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.itextpdf:itextg:5.5.10")
     implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("androidx.core:core-ktx:1.12.0")

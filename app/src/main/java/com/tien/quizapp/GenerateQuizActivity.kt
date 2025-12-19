@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.switchmaterial.SwitchMaterial
+import com.google.firebase.database.FirebaseDatabase // <--- Import Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,16 +29,27 @@ class GenerateQuizActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_generate_quiz)
 
+        // 1. Ánh xạ các View
         val etTopic = findViewById<EditText>(R.id.etTopic)
         val btnGenerate = findViewById<Button>(R.id.btnGenerate)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
         val swChatMode = findViewById<SwitchMaterial>(R.id.swChatMode)
         rvChat = findViewById(R.id.chatRecyclerView)
 
+        // 2. TÌM NÚT THOÁT VÀ BẮT SỰ KIỆN
+        val btnBack = findViewById<ImageButton>(R.id.btnBack)
+        btnBack.setOnClickListener {
+            finish() // Đóng màn hình này, quay về MainActivity
+        }
+
         // Setup RecyclerView (Danh sách chat)
         chatAdapter = ChatAdapter(messageList)
         rvChat.adapter = chatAdapter
-        rvChat.layoutManager = LinearLayoutManager(this)
+
+        // Cấu hình để list tự cuộn xuống dưới cùng
+        val layoutManager = LinearLayoutManager(this)
+        layoutManager.stackFromEnd = true
+        rvChat.layoutManager = layoutManager
 
         val quizAIHelper = QuizAIHelper()
 
@@ -48,11 +61,11 @@ class GenerateQuizActivity : AppCompatActivity() {
             if (isChecked) {
                 btnGenerate.text = "Gửi"
                 etTopic.hint = "Hỏi AI bất cứ điều gì..."
-                addMessageToChat("Đã chuyển sang chế độ Chat. Bạn hỏi đi!", false)
+                addMessageToChat("💬 Đã chuyển sang chế độ Chat. Bạn hỏi đi!", false)
             } else {
                 btnGenerate.text = "Tạo Quiz"
                 etTopic.hint = "Nhập chủ đề (VD: Lịch sử)..."
-                addMessageToChat("Đã chuyển sang chế độ Tạo Quiz.", false)
+                addMessageToChat("🎮 Đã chuyển sang chế độ Tạo Quiz.", false)
             }
         }
 
@@ -71,17 +84,12 @@ class GenerateQuizActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.Main).launch {
                 if (swChatMode.isChecked) {
                     // --- LOGIC CHAT LIÊN TỤC ---
-                    // 1. Hiện câu hỏi của bạn lên màn hình ngay
                     addMessageToChat(input, true)
-
-                    // 2. Gọi AI
                     val answer = quizAIHelper.chatWithAI(input)
-
-                    // 3. Hiện câu trả lời
                     addMessageToChat(answer ?: "Lỗi kết nối mạng!", false)
 
                 } else {
-                    // --- LOGIC TẠO QUIZ ---
+                    // --- LOGIC TẠO QUIZ & LƯU FIREBASE ---
                     addMessageToChat("Đang tạo bộ câu hỏi về: $input ...", true)
 
                     val jsonResult = quizAIHelper.generateQuizFromTopic(input)
@@ -90,16 +98,42 @@ class GenerateQuizActivity : AppCompatActivity() {
                         try {
                             val questions = parseJsonToQuestions(jsonResult)
 
-                            // Gán dữ liệu và chuyển màn hình
-                            QuizActivity.questionModelList = questions
-                            QuizActivity.time = "5"
+                            if (questions.isNotEmpty()) {
+                                // 1. LƯU VÀO FIREBASE REALTIME DATABASE
+                                val databaseUrl = "https://myquizapp-7c19d-default-rtdb.asia-southeast1.firebasedatabase.app/"
+                                val ref = FirebaseDatabase.getInstance(databaseUrl).reference
 
-                            val intent = Intent(this@GenerateQuizActivity, QuizActivity::class.java)
-                            startActivity(intent)
+                                // Tạo ID ngẫu nhiên dựa trên thời gian
+                                val quizId = System.currentTimeMillis().toString()
 
-                            addMessageToChat("✅ Đã tạo xong! Chúc may mắn.", false)
+                                // Tạo đối tượng QuizModel mới
+                                // Lưu ý: Thời gian làm bài (time) sẽ bằng số lượng câu hỏi (ví dụ 10 câu = 10 phút)
+                                val newQuiz = QuizModel(
+                                    id = quizId,
+                                    title = input, // Lấy nội dung nhập làm tiêu đề
+                                    subtitle = "AI tạo (${questions.size} câu)",
+                                    time = "${questions.size}",
+                                    questionList = questions
+                                )
+
+                                // Đẩy lên Firebase
+                                ref.child(quizId).setValue(newQuiz)
+
+                                addMessageToChat("✅ Đã lưu bộ đề vào màn hình chính!", false)
+
+                                // 2. CHUYỂN SANG MÀN HÌNH CHƠI NGAY
+
+
+                                val intent = Intent(this@GenerateQuizActivity, QuizActivity::class.java)
+                                intent.putExtra("id", quizId)       // Truyền ID vừa tạo
+                                intent.putExtra("time", newQuiz.time) // Truyền thời gian
+                                startActivity(intent)
+                            } else {
+                                addMessageToChat("⚠️ AI trả về dữ liệu rỗng. Thử lại nhé!", false)
+                            }
+
                         } catch (e: Exception) {
-                            addMessageToChat("❌ Lỗi dữ liệu AI: ${e.message}", false)
+                            addMessageToChat("❌ Lỗi xử lý dữ liệu: ${e.message}", false)
                         }
                     } else {
                         addMessageToChat("❌ AI không phản hồi.", false)
@@ -119,21 +153,25 @@ class GenerateQuizActivity : AppCompatActivity() {
         rvChat.smoothScrollToPosition(messageList.size - 1)
     }
 
-    // Hàm phụ: Phân tích JSON (Giữ nguyên như cũ)
+    // Hàm phụ: Phân tích JSON
     private fun parseJsonToQuestions(jsonString: String): List<QuestionModel> {
         val list = mutableListOf<QuestionModel>()
-        val jsonArray = JSONArray(jsonString)
-        for (i in 0 until jsonArray.length()) {
-            val obj = jsonArray.getJSONObject(i)
-            val q = QuestionModel(
-                obj.getString("question"),
-                mutableListOf<String>().apply {
-                    val arr = obj.getJSONArray("options")
-                    for (j in 0 until arr.length()) add(arr.getString(j))
-                },
-                obj.getString("correct_answer")
-            )
-            list.add(q)
+        try {
+            val jsonArray = JSONArray(jsonString)
+            for (i in 0 until jsonArray.length()) {
+                val obj = jsonArray.getJSONObject(i)
+                val q = QuestionModel(
+                    obj.getString("question"),
+                    mutableListOf<String>().apply {
+                        val arr = obj.getJSONArray("options")
+                        for (j in 0 until arr.length()) add(arr.getString(j))
+                    },
+                    obj.getString("correct_answer")
+                )
+                list.add(q)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
         return list
     }
