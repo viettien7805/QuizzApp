@@ -15,6 +15,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
         android:scrollbars="none">
 
         <LinearLayout
@@ -24,62 +25,57 @@
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
             android:paddingTop="40dp"
-            android:paddingBottom="24dp">
+            android:paddingBottom="80dp"> <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_circle_white"
+                android:src="@drawable/ic_arrow_left"
+                android:scaleType="centerInside"
+                android:contentDescription="Back" />
+
+            <TextView
+                android:id="@+id/tv_question_counter"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="24dp">
+                android:layout_weight="1"
+                android:text="Question 1/10"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-medium"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:shadowColor="#673AB7"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4" />
 
+            <FrameLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_circle_white"/>
                 <ImageButton
-                    android:id="@+id/btn_back"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/button_circle_white"
-                    android:src="@drawable/ic_arrow_left"
-                    android:scaleType="centerInside"
-                    android:contentDescription="Back" />
-
-                <TextView
-                    android:id="@+id/tv_question_counter"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Question 1/10"
-                    android:textSize="18sp"
-                    android:fontFamily="sans-serif-medium"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/white"
-                    android:gravity="center"
-                    android:shadowColor="#673AB7"
-                    android:shadowDx="0"
-                    android:shadowDy="2"
-                    android:shadowRadius="4" />
-
-                <FrameLayout
-                    android:layout_width="40dp"
-                    android:layout_height="40dp">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/button_circle_white"/>
-
-                    <ImageButton
-                        android:id="@+id/btn_bookmark"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:src="@drawable/ic_bookmark"
-                        android:scaleType="fitCenter"
-                        app:tint="#6A5AE0"
-                        android:contentDescription="Bookmark" />
-                </FrameLayout>
-
-            </LinearLayout>
+                    android:id="@+id/btn_bookmark"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_bookmark"
+                    android:scaleType="fitCenter"
+                    app:tint="#6A5AE0"
+                    android:contentDescription="Bookmark" />
+            </FrameLayout>
+        </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -154,15 +150,12 @@
                 <include
                     android:id="@+id/layout_option_1"
                     layout="@layout/option_item" />
-
                 <include
                     android:id="@+id/layout_option_2"
                     layout="@layout/option_item" />
-
                 <include
                     android:id="@+id/layout_option_3"
                     layout="@layout/option_item" />
-
                 <include
                     android:id="@+id/layout_option_4"
                     layout="@layout/option_item" />
@@ -201,7 +194,9 @@
                             android:layout_height="wrap_content"
                             android:text="Answers"
                             android:textColor="@android:color/white"
-                            android:textSize="10sp"
+                            android:textSize="9sp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:textStyle="bold"
                             android:layout_marginTop="6dp"/>
                     </LinearLayout>
@@ -232,7 +227,8 @@
                             android:layout_height="wrap_content"
                             android:text="Skip"
                             android:textColor="@android:color/white"
-                            android:textSize="10sp"
+                            android:textSize="9sp"
+                            android:maxLines="1"
                             android:textStyle="bold"
                             android:layout_marginTop="6dp"/>
                     </LinearLayout>
@@ -263,7 +259,8 @@
                             android:layout_height="wrap_content"
                             android:text="Add time"
                             android:textColor="@android:color/white"
-                            android:textSize="10sp"
+                            android:textSize="9sp"
+                            android:maxLines="1"
                             android:textStyle="bold"
                             android:layout_marginTop="6dp"/>
                     </LinearLayout>
@@ -294,7 +291,8 @@
                             android:layout_height="wrap_content"
                             android:text="Next"
                             android:textColor="@android:color/white"
-                            android:textSize="10sp"
+                            android:textSize="9sp"
+                            android:maxLines="1"
                             android:textStyle="bold"
                             android:layout_marginTop="6dp"/>
                     </LinearLayout>
