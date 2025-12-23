@@ -7,4 +7,10 @@
     <string name="question">Which soccer team won the FIFA World Cup for the first time?</string>
     <string name="time">Time</string>
     <string name="timer">00:12</string>
+    <string name="default_web_client_id">
+        305125288652-v1o57pp7lhs6hnvhf300btnpjl3he8fs.apps.googleusercontent.com
+    </string>
+    <string name="facebook_app_id">748670380998121</string>
+    <string name="fb_login_protocol_scheme">fb748670380998121</string>
+    <string name="facebook_client_token">e422a831e332ee7cb960d83f7ac854c1</string>
 </resources>

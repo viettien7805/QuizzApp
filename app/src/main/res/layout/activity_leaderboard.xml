@@ -10,8 +10,8 @@
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="54dp"
-        android:paddingBottom="16dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="12dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
@@ -26,12 +26,11 @@
             app:tint="@color/white" />
 
         <TextView
-            android:id="@+id/tvLeaderboardTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Leaderboard"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/btn_back"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,15 +41,15 @@
     <LinearLayout
         android:id="@+id/tabsLayout"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="50dp"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/tab_alltime_inactive"
         android:padding="4dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/headerLayout">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/tab_weekly"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -59,9 +58,9 @@
             android:text="Weekly"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/tab_alltime"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -70,16 +69,15 @@
             android:text="All Time"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/podiumLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:gravity="bottom"
-        android:orientation="horizontal"
         android:paddingHorizontal="24dp"
         android:weightSum="3"
         app:layout_constraintTop_toBottomOf="@id/tabsLayout">
@@ -90,15 +88,52 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:orientation="vertical">
-            <ImageView
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2nd"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvName2nd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:singleLine="true"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/tvScore2nd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:layout_marginBottom="4dp"/>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:src="@drawable/avatar_2nd"
-                android:background="@drawable/bg_avatar_green"
-                android:padding="3dp" />
+                app:cardCornerRadius="32dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#0BC686"> <ImageView
+                android:id="@+id/avatar_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/avatar_female"
+                android:scaleType="centerCrop"
+                android:padding="3dp"/>
+            </androidx.cardview.widget.CardView>
+
             <View
                 android:layout_width="74dp"
-                android:layout_height="100dp"
+                android:layout_height="90dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/podium_2nd_bg" />
         </LinearLayout>
@@ -109,30 +144,67 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1st"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvName1st"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:singleLine="true"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/tvScore1st"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:layout_marginBottom="4dp"/>
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/avatar_1"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvTop1"
                     android:layout_width="84dp"
                     android:layout_height="84dp"
-                    android:src="@drawable/avatar_1st"
-                    android:background="@drawable/bg_avatar_blue"
-                    android:padding="4dp" />
+                    app:cardCornerRadius="42dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#4894FE"> <ImageView
+                    android:id="@+id/avatar_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/avatar_male"
+                    android:scaleType="centerCrop"
+                    android:padding="4dp"/>
+                </androidx.cardview.widget.CardView>
                 <TextView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_alignTop="@id/avatar_1"
-                    android:layout_alignEnd="@id/avatar_1"
-                    android:layout_marginTop="-8dp"
-                    android:layout_marginEnd="-4dp"
-                    android:background="@drawable/bg_crown"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignTop="@id/cvTop1"
+                    android:layout_alignEnd="@id/cvTop1"
+                    android:layout_marginTop="-6dp"
+                    android:layout_marginEnd="-2dp"
+                    android:text="👑"
                     android:gravity="center"
-                    android:text="👑" />
+                    android:elevation="2dp"/>
             </RelativeLayout>
+
             <View
                 android:layout_width="84dp"
-                android:layout_height="145dp"
+                android:layout_height="130dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/podium_1st_bg" />
         </LinearLayout>
@@ -143,38 +215,76 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:orientation="vertical">
-            <ImageView
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3rd"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvName3rd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:singleLine="true"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/tvScore3rd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:layout_marginBottom="4dp"/>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:src="@drawable/avatar_3rd"
-                android:background="@drawable/bg_avatar_pink"
-                android:padding="3dp" />
+                app:cardCornerRadius="32dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FE6988"> <ImageView
+                android:id="@+id/avatar_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/avatar_male"
+                android:scaleType="centerCrop"
+                android:padding="3dp"/>
+            </androidx.cardview.widget.CardView>
+
             <View
                 android:layout_width="74dp"
-                android:layout_height="80dp"
+                android:layout_height="70dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/podium_3rd_bg" />
         </LinearLayout>
     </LinearLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/listContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/tab_alltime_inactive"
-        android:paddingTop="20dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_sheet_white_rounded"
+        android:clipToOutline="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/podiumLayout">
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvLeaderboard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="20dp">
-            <include layout="@layout/item_player_rank" />
-            <include layout="@layout/item_player_rank" />
-            <include layout="@layout/item_player_rank" />
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+            android:layout_height="match_parent"
+            android:clipToPadding="true"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

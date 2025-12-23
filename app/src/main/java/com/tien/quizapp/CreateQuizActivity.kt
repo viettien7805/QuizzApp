@@ -320,7 +320,8 @@ class CreateQuizActivity : AppCompatActivity() {
 
     private fun saveQuizToFirebase(title: String, time: String) {
         try {
-            val ref = FirebaseDatabase.getInstance(databaseUrl).reference
+            val ref = FirebaseDatabase.getInstance(databaseUrl).getReference("Quizzes")
+
             val quizId = System.currentTimeMillis().toString()
 
             val newQuiz = QuizModel(

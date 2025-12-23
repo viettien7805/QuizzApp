@@ -5,13 +5,22 @@
     <color name="teal_200">#03DAC5</color>
     <color name="teal_700">#018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
 
     <color name="blue">#2196F3</color>
     <color name="gray">#9E9E9E</color>
     <color name="orange">#FF9800</color>
     <color name="background_light">#F4F3F9</color>
+    <color name="purple_header_start">#8E2DE2</color>
+    <color name="purple_header_end">#4A00E0</color>
 
+    <color name="purple_button">#6C5CE7</color>
+    <color name="purple_icon_bg">#A29BFE</color> <color name="orange_button">#FF9F43</color>
+    <color name="orange_icon_bg">#FDCB6E</color>
+
+    <color name="orange_progress">#FF9F43</color> <color name="gray_track">#E0E0E0</color> <color name="coin_yellow">#FFD700</color> <color name="coin_pill_bg">#6A5ACD</color>
+
+    <color name="text_light_purple">#D6D6D6</color>
     <!-- Purples -->
     <color name="purple_400">#C084FC</color>
     <color name="purple_500">#A855F7</color>
@@ -33,7 +42,29 @@
     <color name="bg_app">#F5F7FA</color>
     <color name="primary_blue">#1976D2</color>
     <color name="accent_orange">#FF9800</color>
-    <color name="text_dark">#212121</color>
+    <!-- Background -->
+    <color name="background">#F9F8FC</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Text Colors -->
+    <color name="text_dark">#1A1A2E</color>
+    <color name="text_muted">#8B8BA8</color>
+    <color name="text_light_muted">#D0CCDB</color>
+
+    <!-- Gradients Reference -->
+    <color name="purple_gradient_start">#9D4EDD</color>
+    <color name="purple_gradient_end">#7209B7</color>
+
+    <color name="orange_gradient_start">#FF8C42</color>
+    <color name="orange_gradient_end">#FF6B35</color>
+
+    <!-- Primary Colors -->
+    <color name="purple_primary">#8B5CF6</color>
+    <color name="orange_primary">#FB923C</color>
+
+    <!-- Semi-transparent -->
+    <color name="white_semi_transparent">#CCFFFFFF</color>
+    <color name="yellow_accent">#FBBF24</color>
     <color name="text_gray">#757575</color>
     <color name="card_bg_light">#FFFFFF</color>
     <color name="icon_bg_light_blue">#E3F2FD</color>

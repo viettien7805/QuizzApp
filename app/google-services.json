@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1017379757360",
+    "firebase_url": "https://myquizapp-7c19d-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "myquizapp-7c19d",
     "storage_bucket": "myquizapp-7c19d.firebasestorage.app"
   },
@@ -12,7 +13,20 @@
           "package_name": "com.tien.quizapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1017379757360-gm6q8n4cf86vvf56lo5gjhugml65fg2o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tien.quizapp",
+            "certificate_hash": "bac7c36fa285d5e1cc45691fdfeceb15b14d2964"
+          }
+        },
+        {
+          "client_id": "1017379757360-mjal2r55922jknfm4d37h92k8rnhunp9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDRyr2AqLBzFj_eUtyItYUG03qMnmmY_r8"
@@ -20,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017379757360-mjal2r55922jknfm4d37h92k8rnhunp9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

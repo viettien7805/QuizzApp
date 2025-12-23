@@ -101,7 +101,7 @@ class GenerateQuizActivity : AppCompatActivity() {
                             if (questions.isNotEmpty()) {
                                 // 1. LƯU VÀO FIREBASE REALTIME DATABASE
                                 val databaseUrl = "https://myquizapp-7c19d-default-rtdb.asia-southeast1.firebasedatabase.app/"
-                                val ref = FirebaseDatabase.getInstance(databaseUrl).reference
+                                val ref = FirebaseDatabase.getInstance(databaseUrl).getReference("Quizzes")
 
                                 // Tạo ID ngẫu nhiên dựa trên thời gian
                                 val quizId = System.currentTimeMillis().toString()
